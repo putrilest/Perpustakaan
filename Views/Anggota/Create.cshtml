@@ -1,0 +1,28 @@
+@model PerpustakaanMVC.Models.Anggota
+
+@{
+  ViewData["Title"] =  "Tambah Anggota";  
+}
+
+<h2>Tambah Anggota</h2>
+
+<form asp-function="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Nama"></label>
+        <input asp-for="Nama" class="form-control"/>
+        <span asp-validation-for="Nama" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Alamat" class="control-label"></label>
+        <input asp-for="Alamat" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Telepon" class="control-label"></label>
+        <input asp-for="Telepon" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-success">Simpan</button>
+    <a asp-action="Index" class="btn btn-secondary">Kembali</a>
+</form>

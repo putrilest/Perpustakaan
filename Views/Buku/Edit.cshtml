@@ -1,0 +1,44 @@
+@model PerpustakaanMVC.Models.Buku
+
+@{
+    ViewData["Title"] = "Edit Buku";
+}
+
+<h2>Edit Buku</h2>
+
+<form asp-function="Edit" method="post">
+    <input type="hidden" asp-for="Id"/>
+    <div class="form-group">
+        <label asp-for="Judul"></label>
+        <input asp-for="Judul" class="form-control" />
+        <span asp-validation-for="Judul" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Penulis"></label>
+        <input asp-for="Penulis" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Penerbit"></label>
+        <input asp-for="Penerbit" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TahunTerbit"></label>
+        <input asp-for="TahunTerbit" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="JumlahHalaman"></label>
+        <input asp-for="JumlahHalaman" class="form-control"/>
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="StatusDipinjam" class="form-check-input"/>
+        <label asp-for="StatusDipinjam" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    <a asp-action="Index" class="btn btn-secodary">Kembali</a>
+</form>

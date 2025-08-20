@@ -1,0 +1,20 @@
+@model PerpustakaanMVC.Models.Anggota
+
+@{
+    ViewData["Title"] = "Hapus Anggota";
+} 
+
+<h2>Hapus Anggota</h2>
+
+<div>
+    <p>Apakah Anda yakin ingin menghapus anggota berikut?</p>
+    <p><strong>Nama:</strong> @Model.Nama</p>
+    <p><strong>Alamat:</strong> @Model.Alamat</p>
+    <p><strong>Telepon:</strong> @Model.Telepon</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Hapus</button>
+    <a asp-action="Index" class="btn btn-secondary">Batal</a>
+</form>

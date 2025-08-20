@@ -1,0 +1,29 @@
+@model PerpustakaanMVC.Models.Peminjaman
+
+@{
+    ViewData["Title"] = "Detail Peminjaman";
+}
+
+<h2>Detail Peminjaman</h2>
+
+<div>
+    <h4>Detail Peminjaman</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">Buku</dt>
+        <dd class="col-sm-10">@Model.Buku?.Judul</dd>
+
+        <dt class="col-sm-2">Anggota</dt>
+        <dd class="col-sm-10">@Model.Anggota?.Nama</dd>
+
+        <dt class="col-sm-2">Tanggal Pinjam</dt>
+        <dd class="col-sm-10">@Model.TanggalPinjam.ToString("dd-MM-yyyy")</dd>
+
+        <dt class="col-sm-2">Tanggal Kembali</dt>
+        <dd class="col-sm-10">@Model.TanggalKembali?.ToString("dd-MM-yyyy")</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Kembali</a>
+</div>

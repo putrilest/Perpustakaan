@@ -1,0 +1,30 @@
+@model PerpustakaanMVC.Models.Buku
+
+@{
+    ViewData["Title"] = "Hapus Buku";
+}
+
+<h2>Hapus Buku</h2>
+
+<h4>Apakah Anda Yakin ingin menghapus buku ini?</h4>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Judul</dt>
+        <dd class="col-sm-10">@Model.Judul</dd>
+
+        <dt class="col-sm-2">Penulis</dt>
+        <dd class="col-sm-10">@Model.Penulis</dd>
+
+        <dt class="col-sm-2">Penerbit</dt>
+        <dd class="col-sm-10">@Model.Penerbit</dd>
+
+        <dt class="col-sm-2">Tahun Terbit</dt>
+        <dd class="col-sm-10">@Model.TahunTerbit</dd>
+    </dl>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden"  asp-for="Id"/>
+    <button type="submit" class="btn btn-danger">Hapus</button>
+    <a asp-action="Index" class="btn btn-secondary">Batal</a>
+</form>

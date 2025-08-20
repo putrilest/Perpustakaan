@@ -1,0 +1,34 @@
+@model IEnumerable<PerpustakaanMVC.Models.Peminjaman>
+
+<h2>Daftar Peminjaman</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Tambah Peminjaman</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Buku</th>
+            <th>Anggota</th>
+            <th>Tanggal Pinjam</th>
+            <th>Tanggal Kembali</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <td>@item.Buku?.Judul</td>
+        <td>@item.Anggota?.Nama</td>
+        <td>@item.TanggalPinjam.ToString("dd/MM/yyyy")</td>
+        <td>@(item.TanggalKembali?.ToString("dd/MM/yyyy") ?? "-")</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    }
+    </tbody>
+</table>

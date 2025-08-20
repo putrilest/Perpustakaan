@@ -1,0 +1,43 @@
+@model PerpustakaanMVC.Models.Buku
+
+@{
+    ViewData["Title"] = "Tambah Buku";
+}
+
+<h2>Tambah Buku</h2>
+
+<form asp-function="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Judul"></label>
+        <input asp-for="Judul" class="form-control"/>
+        <span asp-validation-for="Judul" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Penulis"></label>
+        <input asp-for="Penulis" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Penerbit"></label>
+        <input asp-for="Penerbit" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TahunTerbit"></label>
+        <input asp-for="TahunTerbit" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="JumlahHalaman"></label>
+        <input asp-for="JumlahHalaman" class="form-control"/>
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="StatusDipinjam" class="form-check-input"/>
+        <label asp-for="StatusDipinjam" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Simpan</button>
+    <a asp-function="Index" class="btn btn-secondary">Kembali</a>
+</form>

@@ -1,0 +1,32 @@
+@model PerpustakaanMVC.Models.Buku
+
+@{
+    ViewData["Title"] = "Detail Buku";
+}
+
+<h2>Detail Buku</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Judul</dt>
+        <dd class="col-sm-10">@Model.Judul</dd>
+
+        <dt class="col-sm-2">Penulis</dt>
+        <dd class="col-sm-10">@Model.Penulis</dd>
+
+        <dt class="col-sm-2">Penerbit</dt>
+        <dd class="col-sm-10">@Model.Penerbit</dd>
+
+        <dt class="col-sm-2">Tahun Terbit</dt>
+        <dd class="col-sm-10">@Model.TahunTerbit</dd>
+
+        <dt class="col-sm-2">Jumlah Halaman</dt>
+        <dd class="col-sm-10">@Model.JumlahHalaman</dd>
+
+        <dt class="col-sm-2">Status Dipinjam</dt>
+        <dd class="col-sm-10">@(Model.StatusDipinjam ? "Dipinjam" :"Tersedia")</dd>
+    </dl>
+</div>
+
+<a asp-function="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Kembali</a>

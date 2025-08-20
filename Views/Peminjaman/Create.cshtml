@@ -1,0 +1,24 @@
+@model PerpustakaanMVC.Models.Peminjaman
+
+<h2>Tambah Peminjaman</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Buku</label>
+        <select asp-for="BukuId" class="form-control" asp-items="ViewBag.BukuId"></select>
+    </div>
+    <div class="form-group">
+        <label>Anggota</label>
+        <select asp-for="AnggotaId" class="form-control" asp-items="ViewBag.AnggotaId"></select>
+    </div>
+    <div class="form-group">
+        <label>Tanggal Pinjam</label>
+        <input asp-for="TanggalPinjam" class="form-control" type="date"
+            value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+    </div>
+    <div class="form-group">
+        <label>Tanggal Kembali</label>
+        <input asp-for="TanggalKembali" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-success">Simpan</button>
+</form>
