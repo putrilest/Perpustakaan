@@ -16,10 +16,21 @@ namespace PerpustakaanMVC.Controllers
         }
 
         // GET: Buku
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            var daftarBuku = _context.Buku.ToList();
-            return View(daftarBuku);
+            var daftarBuku = from b in _context.Buku
+                            select b;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                daftarBuku = daftarBuku.Where(b =>
+                    b.Judul.Contains(searchString) ||
+                    b.Penulis.Contains(searchString) ||
+                    b.Penerbit.Contains(searchString) ||
+                    b.TahunTerbit.Contains(searchString));
+            }
+
+            return View(daftarBuku.ToList());
         }
 
         // GET: Buku/Detais/3

@@ -2,11 +2,18 @@
 
 <h2>Daftar Peminjaman</h2>
 
-<p>
+<div class="d-flex justify-content-between align-items-center mb-3">
     <a asp-action="Create" class="btn btn-primary">Tambah Peminjaman</a>
-</p>
 
-<table class="table table-bordered">
+    <form asp-action="Index" method="get" class="d-flex search-form">
+        <input type="text" name="searchString" class="form-control me-2"
+               placeholder="Cari Buku, Anggota, Tanggal Pinjam, ..."
+               value="@Context.Request.Query["searchString"]" />
+        <button type="submit" class="btn btn-outline-secondary">Cari</button>
+    </form>
+</div>
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Buku</th>

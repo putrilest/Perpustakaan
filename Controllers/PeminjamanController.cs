@@ -19,11 +19,20 @@ namespace PerpustakaanMVC.Controllers
         }
 
         // GET: Peminjaman
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var peminjaman = _context.Peminjaman
                                      .Include(p => p.Buku)
-                                     .Include(p => p.Anggota);
+                                     .Include(p => p.Anggota)
+                                     .AsQueryable();
+            
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                peminjaman = peminjaman.Where(p =>
+                    p.Buku.Judul.Contains(searchString) ||
+                    p.Anggota.Nama.Contains(searchString) ||
+                    p.TanggalPinjam.ToString().Contains(searchString));
+            }
             return View(await peminjaman.ToListAsync());
         }
 

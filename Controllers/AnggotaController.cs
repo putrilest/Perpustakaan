@@ -14,10 +14,19 @@ namespace PerpustakaanMVC.Controllers
         }
 
         //GET: Anggota
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            var anggota = _context.Anggota.ToList();
-            return View(anggota);
+            var daftarAnggota = from a in _context.Anggota
+                                select a;
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                daftarAnggota = daftarAnggota.Where(a => 
+                    a.Nama.Contains(searchString) ||
+                    a.Alamat.Contains(searchString) ||
+                    a.Telepon.Contains(searchString));
+            }
+
+            return View(daftarAnggota.ToList());
         }
 
         //GET: Anggota/Details/5
