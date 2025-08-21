@@ -1,20 +1,24 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PerpustakaanMVC.Models;
+using PerpustakaanMVC.Data;
 
 namespace PerpustakaanMVC.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ApplicationDbContext context)
     {
-        _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
     {
+        ViewBag.TotalBuku = _context.Buku.Count();
+        ViewBag.TotalAnggota = _context.Anggota.Count();
+        ViewBag.TotalPeminjaman = _context.Peminjaman.Count();
         return View();
     }
 
