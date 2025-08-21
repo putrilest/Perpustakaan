@@ -6,7 +6,7 @@
 
 <h2>Tambah Buku</h2>
 
-<form asp-function="Create" method="post">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Judul"></label>
         <input asp-for="Judul" class="form-control"/>
@@ -36,6 +36,11 @@
     <div class="form-group form-check">
         <input asp-for="StatusDipinjam" class="form-check-input"/>
         <label asp-for="StatusDipinjam" class="form-check-label"></label>
+    </div>
+
+    <div class="form-group">
+        <label for="fotoSampul">Foto Sampul</label>
+        <input type="file" name="fotoSampul" class="form-control"/>
     </div>
 
     <button type="submit" class="btn btn-success">Simpan</button>

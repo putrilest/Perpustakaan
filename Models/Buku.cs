@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace PerpustakaanMVC.Models
 {
@@ -6,7 +8,7 @@ namespace PerpustakaanMVC.Models
     {
         public int Id {get; set;}
 
-        [Required]
+        // [Required]
         public string Judul {get; set;}
 
         public string Penulis {get; set;}
@@ -18,5 +20,9 @@ namespace PerpustakaanMVC.Models
         public int JumlahHalaman {get; set;}
 
         public bool StatusDipinjam {get; set;} = false;
+
+        [BindNever]
+        [ValidateNever]
+        public string FotoSampul {get; set;}
     }
 }

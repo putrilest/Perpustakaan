@@ -8,6 +8,17 @@
 
 <div>
     <dl class="row">
+        <dt class="col-sm-12">
+            @if (!string.IsNullOrEmpty(Model.FotoSampul))
+            {
+                <img src="@Model.FotoSampul" alt="Foto Sampul" width="200" class="img-thumbnail"/>
+            }
+            else
+            {
+                <span class="text-muted">Belum ada foto</span>
+            }
+        </dt>
+
         <dt class="col-sm-2">Judul</dt>
         <dd class="col-sm-10">@Model.Judul</dd>
 
