@@ -12,5 +12,8 @@ namespace PerpustakaanMVC.Models
         public string Alamat {get; set;}
 
         public string Telepon {get; set;}
+
+        // Navigation property ke peminjaman
+        public ICollection<Peminjaman> Peminjaman { get; set; } = new List<Peminjaman>();
     }
 }

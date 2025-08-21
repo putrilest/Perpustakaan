@@ -6,10 +6,76 @@
 
 <h2>Detail Anggota</h2>
 
-<div>
-    <p><strong>Nama:</strong> @Model.Nama</p>
+
+<div class="anggota-card">
+    <h3>@Model.Nama</h3>
     <p><strong>Alamat:</strong> @Model.Alamat</p>
     <p><strong>Telepon:</strong> @Model.Telepon</p>
 </div>
 
+<h3>Daftar Pinjaman</h3>
+
+@if (Model.Peminjaman != null && Model.Peminjaman.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-dark">
+                <th>Judul Buku</th>
+                <th>Tanggal Pinjam</th>
+                <th>Tanggal Kembali</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var pinjam in Model.Peminjaman)
+        {
+            <tr>
+                <td>@pinjam.Buku.Judul</td>
+                <td>@pinjam.TanggalPinjam.ToString("dd MMM yyyy")</td>
+                <td>
+                    @(pinjam.TanggalKembali.HasValue 
+                        ? pinjam.TanggalKembali.Value.ToString("dd MMM yyyy") 
+                        : "Belum dikembalikan")
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Belum ada pinjaman.</p>
+}
+
 <a asp-action="Index" class="btn btn-secondary">Kembali</a>
+
+<style>
+    .anggota-card {
+        background: #f1f5f9;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    table {
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    th {
+        background-color: #1e293b;
+        color: black;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    td, th {
+        padding: 10px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9fafb;
+    }
+</style>

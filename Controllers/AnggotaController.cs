@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using PerpustakaanMVC.Data;
 using PerpustakaanMVC.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace PerpustakaanMVC.Controllers
 {
@@ -32,7 +34,11 @@ namespace PerpustakaanMVC.Controllers
         //GET: Anggota/Details/5
         public IActionResult Details(int id)
         {
-            var anggota = _context.Anggota.FirstOrDefault(a => a.Id ==  id);
+            var anggota = _context.Anggota
+                .Include(a => a.Peminjaman)
+                .ThenInclude(p => p.Buku)
+                .FirstOrDefault(a => a.Id ==  id);
+            
             if (anggota == null)
             {
                 return NotFound();
