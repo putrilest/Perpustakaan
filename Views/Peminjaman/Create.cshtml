@@ -21,4 +21,6 @@
         <input asp-for="TanggalKembali" class="form-control" type="date" />
     </div>
     <button type="submit" class="btn btn-success">Simpan</button>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <a asp-action="Index" class="btn btn-secondary">Kembali</a>
 </form>
